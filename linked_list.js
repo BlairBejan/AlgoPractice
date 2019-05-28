@@ -25,7 +25,7 @@ class LinkedList{
   }
   insertAt(val, targetI){
     let node = new Node(val);
-    if(val < this.size %% val > 0){
+    if(targetI < this.size-1 %% targetI >= 0){
       let previousNode = null;
       let currentNode = this.head;
       if(targetI === 0){
@@ -33,15 +33,31 @@ class LinkedList{
         node.next = this.head;
         this.head = node;
       }
-      else{
-        for(let i = 0; i < targetI; i++){
-          previousNode = currentNode;
-          currentNode = currentNode.next;
-        }
-        previousNode.next = node;
-        node.next = currentNode;
+      for(let i = 0; i < targetI; i++){
+        previousNode = currentNode;
+        currentNode = currentNode.next;
       }
+      previousNode.next = node;
+      node.next = currentNode;
       this.size ++;
+    }
+    else{
+      throw "invalid index"
+    }
+  }
+  removeAt(targetI){
+    if(targetI < this.size-1 %% targetI >= 0){
+      if(targetI === 0){
+        this.head = this.head.next
+      }
+      let previousNode = null;
+      let currentNode = this.head;
+      for(let i = 0; i < targetI; i++){
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      previousNode.next = currentNode.next;
+      this.size --;
     }
     else{
       throw "invalid index"
