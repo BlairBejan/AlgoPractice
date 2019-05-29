@@ -1,16 +1,14 @@
-class maxHeap{
+class MinHeap{
   constructor(arr){
-    if(arr){
-      this.heap = createHeap(arr);
+    this.heap = [null];
+  }
+  heapify(idx){
+    if(this.heap[idx] < this.heap[Math.floor(idx/2)]){
+
     }
-    else{
-      this.heap = [null];
-    }
-  };
-  createHeap(arr){
-    if(arr[0]){
-      arr.unshift(null);
-    }
-    
+  }
+  insert(num){
+    this.heap.push(num);
+    heapify(this.heap.length-1);
   }
 }
