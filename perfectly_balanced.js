@@ -13,7 +13,7 @@ const balanced = (string) => {
         return false;
     };
     let counter = 0;
-    for(let i in string){
+    for(const i of string){
         if(i == "x"){counter ++}
         else{counter --};
     }
