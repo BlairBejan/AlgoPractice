@@ -20,3 +20,34 @@ const balanced = (string) => {
     if(counter){return false}
     else{return true};
 }
+
+// Given a string containing only lowercase letters, find whether every letter that appears in the string appears the same number of times. Don't forget to handle the empty string ("") correctly!
+
+// balanced_bonus("xxxyyyzzz") => true
+// balanced_bonus("abccbaabccba") => true
+// balanced_bonus("xxxyyyzzzz") => false
+// balanced_bonus("abcdefghijklmnopqrstuvwxyz") => true
+// balanced_bonus("pqq") => false
+// balanced_bonus("fdedfdeffeddefeeeefddf") => false
+// balanced_bonus("www") => true
+// balanced_bonus("x") => true
+// balanced_bonus("") => true
+
+const balancedBonus = (string) => {
+    let letterCount = {};
+    for(const i of string){
+        if(letterCount[i]){
+            letterCount[i]++
+        }
+        else{
+            letterCount[i] = 1;
+        }
+    }
+    let checker = string.charAt(0);
+    for(const key in letterCount){
+        if(letterCount[key] !== letterCount[checker]){
+            return false
+        }
+    }
+    return true
+}
